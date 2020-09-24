@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct pessoa
+{
+       char nome[100];
+       float idade;
+       float matricula;
+       };
+
+struct pessoa le (void){
+       struct pessoa aluno;
+       printf("Digite o nome: \n");
+       scanf("%s", &aluno.nome);
+       printf("Digite a idade: \n");
+	   scanf("%f", &aluno.idade);
+       printf("Digite a matricula: \n");
+	   scanf("%f", &aluno.matricula);
+       return aluno;
+       }
+
+int main(void)
+{
+  struct pessoa aluno=le();
+  printf("O ponto fornecido foi: (%s, %.0f, %.0f)\n", aluno.nome, aluno.idade, aluno.matricula);	
+  
+  system ("PAUSE");
+  return 0;
+}
