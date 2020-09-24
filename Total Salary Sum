@@ -1,0 +1,67 @@
+#include <stdio.h> 
+#include <stdlib.h>
+
+/*Programa que lê o número do funcionário, o número de horas 
+trabalhadas mensais, o valor que recebe por hora e o número de filhos com idade 
+menor de 14 anos. Calcula e escreve o salário deste funcionário, sendo que cada 
+filho menor de 14 anos acrescenta 10% do salário.
+Para 1 funcionário o programa dá o valor do salário do mesmo.
+Para mais de 1 funcionário o programa da o valor gasto pela empresa para pagar os funcionários.
+Programa pede o mes e o ano de entrada.*/
+
+struct data
+{
+       float mes;
+       float ano;
+       };
+
+struct data le (void){
+       struct data hoje;
+       printf("Digite o mes (numero): "); /*pede o mes de entrada*/
+       scanf("%f", &hoje.mes);
+       printf("Digite o ano: "); /*Refere-se ao ano de entrada*/
+       scanf("%f", &hoje.ano);
+       return hoje;
+       }
+
+int main (void) 
+{ 
+int funcionario; 
+int horas;
+float mensal, valor, salario; 
+int filhos; 
+struct data hoje=le();
+  printf("A data fornecida foi: (%.0f, %.0f)\n", hoje.mes, hoje.ano);  /*Lhe fornece mês e ano de entrada*/
+printf ("Digite o total de horas mensais: "); /*Diz o valor mensal do funcionário*/
+scanf ("%f", &mensal);
+printf ("Digite o numero de funcionarios: "); /*conta o numero de funcionários da empresa*/
+scanf ("%d", &funcionario); 
+printf ("Digite o numero de horas trabalhadas: ");  /*multiplica pelo numero de horas trabalhadas pelos funcionários*/
+scanf ("%d", &horas);
+printf ("Digite o valor por hora: "); /*multiplica pelo valor da hora trabalhada pelo funcionário*/
+scanf ("%f", &valor); 
+printf ("Digite o numero de filhos < 14: "); /*multiplica pelo total de número de filhos menosres de 14 anos de cada funcionário*/
+scanf ("%d", &filhos); 
+if (funcionario<2) /*Numero de funcionários menor que 2, usa um cálculo individual*/
+{
+salario=horas*valor;
+}
+else if(funcionario>=2) /*Sendo maior ou igual a 2, usa um cálculo coletivo*/
+{
+salario=funcionario*horas*valor;
+} 
+if (filhos>0) /*Tendo 1 ou mais filhos, tem um aumento no salário*/
+{
+salario=salario + salario*0.1*filhos; 
+}
+if (horas>mensal) /*Acrescenta hora extra caso o funcionário tenha trabalhado mais que a hora indicada*/
+{
+	salario=salario*(0.25*valor);
+}
+printf ("O salario final eh %.2f\n", salario); /*a soma do salário final recebida pelos funcionários*/
+system ("pause"); 
+}
+
+/*O programa escreve o pagamento total que uma empresa paga a seus funcionários, podendo ser posto qualquer quantidade de funcionários, 
+podendo assim contar de um funcionário específico, um grupo de funcionários ou todos os funcionários de um setor específico ou da
+empresa inteira.*/
